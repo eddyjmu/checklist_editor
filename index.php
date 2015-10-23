@@ -53,8 +53,8 @@ foreach($settings::$page_arrays as $page_name => $page_comps){
 // controller = layout
 // view = page
 $page_model = new $model();
-$page_controller = new $controller($model);
-$page_view = new $view($model);
+$page_controller = new $controller($page_model);
+$page_view = new $view($page_sought,$page_model);
 echo $page_view->output();
 print_r(error_get_last());
 ?>

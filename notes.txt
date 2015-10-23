@@ -1,0 +1,36 @@
+1. So...
+  Home Page
+    model: home page title, content, controllers, view, classes
+    classes: none
+    view: page layout
+    controller: menu
+  New List
+    model: new list page title, content, controllers, view, classes
+    classes: form
+    view: checklistpage layout
+    controller: menu, empty list save form, jquery modifier
+  Edit List
+    model: edit list page title, controllers, view, classes
+      if post
+        checklist content, loadxml, savexml
+      else 
+        savexml
+    classes: form, xml
+    view: checklistpage layout
+    controller: menu
+      if post
+        jquery modifier, filled list save form
+      else
+        checklist load form
+  Reports
+    model: reports page title, controllers, view, classes
+      if post
+        report content, loadxml
+    classes: form, xml
+    view: page layout
+    controller: menu, load report form
+  Options
+    model: options page title, controllers, view, classes, options content, loadxml, savexml
+    classes: form, xml
+    view: options page layout
+    controller: menu, jquery modifier, filled list save form

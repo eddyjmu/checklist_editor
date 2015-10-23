@@ -22,12 +22,6 @@
 		Bonus requirements — the application will allow the user to:
 			Edit/update/delete list items
 			Re-order list items
-	Option 2: Rebuild Rackspace home page with Bootstrap
-		System requirements — the page will:
-			Contain existing internal functionality (excludes third-party functions like chat/search/analytics)
-			Utilize Bootstrap elements for various interactions/patterns
-		Bonus requirements — the page will:
-			Include improvements to user design/experience as you see fit
 
 */
 //grabbing all settings
@@ -37,21 +31,21 @@ $settings = new settings();
 if (isset($_GET['page'])&&($_GET['page']<>'')) {
 	$page_sought = $_GET['page'];
 	// assigning a page if sought page does not exist in array
-	if(!array_key_exists($page_sought,$settings->page_arrays)){
+	if(!array_key_exists($page_sought,$settings::$page_arrays)){
 		$page_sought = 'home';
 	}
 } else {
 	$page_sought = 'home';
 }
 // grabbing page components
-foreach($settings->page_arrays as $page_name => $page_comps){
+foreach($settings::$page_arrays as $page_name => $page_comps){
 	if($page_sought == $page_name){
 		$model = $page_comps['model'];
 		$view = $page_comps['view'];
 		$controller = $page_comps['controller'];
-		require($settings->includes_folder.'/'.$model.'.class.php');
-		require($settings->includes_folder.'/'.$view.'.class.php');
-		require($settings->includes_folder.'/'.$controller.'.class.php');
+		require((settings::$includes_folder).'/'.$model.'.class.php');
+		require((settings::$includes_folder).'/'.$view.'.class.php');
+		require((settings::$includes_folder).'/'.$controller.'.class.php');
 	}
 }
 // filling page components
@@ -62,4 +56,5 @@ $page_model = new $model();
 $page_controller = new $controller($model);
 $page_view = new $view($model);
 echo $page_view->output();
+print_r(error_get_last());
 ?>

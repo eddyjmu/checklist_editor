@@ -1,5 +1,8 @@
 <?php
 	class intro {
-		public $page_title = '';
+		public static $page_title;
+		function __construct(){
+			self::$page_title = 'Home';
+		}
 	}
 ?>

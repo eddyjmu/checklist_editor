@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checklist>
+	<creation>1445695350</creation>
+	<items>
+		<item>
+			<completed>1445695350</completed>
+			<description>notes started at least?</description>
+		</item>
+		<item>
+			<completed></completed>
+			<description>PHP MVC Framework</description>
+		</item>
+		<item>
+			<completed></completed>
+			<description>JS/jQuery Dependencies</description>
+		</item>
+		<item>
+			<completed></completed>
+			<description>HTML5/CSS</description>
+		</item>
+	</items>
+</checklist>

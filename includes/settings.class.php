@@ -3,17 +3,19 @@
 		public static $page_arrays;
 		public static $includes_folder;
 		public static $site_title;
+		public static $xml_folder;
+		public static $status_array;
 		public function __construct(){
 			self::$page_arrays = array(
-				'home' => array('title' => 'Home','model' => 'intro','view' => 'page','controller' => 'layout'),
-				'new' => array('title' => 'New List','model' => 'newlist','view' => 'page','controller' => 'layout'),
-				'edit' => array('title' => 'Edit Lists','model' => 'editlist','view' => 'page','controller' => 'layout'),
-				'options' => array('title' => 'Options','model' => 'optionspage','view' => 'page','controller' => 'layout'),
-				'reports' => array('title' => 'Reports','model' => 'reportspage','view' => 'page','controller' => 'layout'),
+				'homepage' => 'Home',
+				'editlistpage' => 'Lists',
+				'reportspage' => 'Reports',
+				'optionspage' => 'Options'
 			);
 			self::$includes_folder = 'includes';
 			self::$site_title = 'Checklist Editor';
+			self::$xml_folder = 'checklists';
+			self::$status_array = array('Save Failed!','Checklist Name already exists!','Checklist Saved!','Checklist Deleted!');
 		}
-
 	}
 ?>

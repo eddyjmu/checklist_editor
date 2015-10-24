@@ -1,29 +1,5 @@
 <?php 
-/* 
-
-	Rackspace Interview Coding Test: Edward Muller, October 2015
-	------------------------------------------------------------
-	Success criteria (minimum requirements):
-		Application meets all system requirements
-		Hand-written, well formed, semantic code
-		Project is available for review on public GitHub account
-		Consistent across latest versions of Firefox/Chrome/IE
-	Bonus criteria:
-		Next browser technologies: HTML5/CSS3
-		Grid frameworks or hand-coded responsive layout
-		Usage of JS libraries
-		Commented code where applicable
-		User interaction animations/behaviors
-		Provide concepts/wireframes/mockups
-	Option 1: Design/build a web-based checklist
-		System requirements — the application will allow the user to:
-			Create list items
-			Check list items as complete
-		Bonus requirements — the application will allow the user to:
-			Edit/update/delete list items
-			Re-order list items
-
-*/
+//	CHECKLIST EDITOR - Edward Muller - October 2015
 //grabbing all settings
 require('includes/settings.class.php');
 $settings = new settings();
@@ -31,30 +7,35 @@ $settings = new settings();
 if (isset($_GET['page'])&&($_GET['page']<>'')) {
 	$page_sought = $_GET['page'];
 	// assigning a page if sought page does not exist in array
-	if(!array_key_exists($page_sought,$settings::$page_arrays)){
-		$page_sought = 'home';
+	if(!array_key_exists($page_sought,settings::$page_arrays)){
+		$page_sought = 'homepage';
 	}
 } else {
-	$page_sought = 'home';
+	$page_sought = 'homepage';
 }
-// grabbing page components
-foreach($settings::$page_arrays as $page_name => $page_comps){
+// grabbing page components and grabbing model class
+foreach(settings::$page_arrays as $page_name => $page_title){
 	if($page_sought == $page_name){
-		$model = $page_comps['model'];
-		$view = $page_comps['view'];
-		$controller = $page_comps['controller'];
+		$model = $page_name;
 		require((settings::$includes_folder).'/'.$model.'.class.php');
-		require((settings::$includes_folder).'/'.$view.'.class.php');
-		require((settings::$includes_folder).'/'.$controller.'.class.php');
 	}
 }
-// filling page components
-// model = intro
-// controller = layout
-// view = page
+// creating page object
 $page_model = new $model();
-$page_controller = new $controller($page_model);
-$page_view = new $view($page_sought,$page_model);
+// grabbing dependencies based on page model
+if(!empty($page_model->dependencies)){
+	foreach($page_model->dependencies as $dependency){
+		require((settings::$includes_folder).'/'.$dependency.'.class.php');
+	}
+}
+// grabbing controller classes
+foreach($page_model->controllers as $controller){
+	require((settings::$includes_folder).'/'.$controller.'.class.php');
+	$controller = new $controller($page_model);
+}
+$view = $page_model->view;
+require((settings::$includes_folder).'/'.$view.'.class.php');
+$page_view = new $view($page_model);
 echo $page_view->output();
 print_r(error_get_last());
 ?>

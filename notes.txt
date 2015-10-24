@@ -1,6 +1,7 @@
-1. So...
+1. So...basic stuff
   Home Page
-    model: home page title, content, controllers, view, classes
+    model: intro
+      home page title, content, controllers, view, classes
     classes: none
     view: page layout
     controller: menu
@@ -34,3 +35,70 @@
     classes: form, xml
     view: options page layout
     controller: menu, jquery modifier, filled list save form
+2. checklist for checklist haha
+  home 'Home'
+    model:        home
+    dependencies: n/a
+    view:         page
+    controllers:  menu
+  newlistpage 'New List'
+    model:        newlistpage
+    dependencies: form
+    view:         checklistpage
+    controllers:  menu, listsaveform, jquerymod
+  editlistpage 'Edit List'
+    model:        editlistpage
+    dependencies: form, xml
+    view:         checklistpage
+    controllers:  
+      post 'load':        jquerymod, listsaveform
+        post 'save':      saveform
+      else:               loadform
+  reportspage 'Reports'
+    model:        reportspage
+    dependencies: form, xml
+    view:         page
+    controllers:  menu, loadform
+  optionspage 'Options'
+    model:        optionspage
+    dependencies: form, xml
+    view:         optionspagelayout
+    controllers:  menu, jquerymod, listsaveform
+3. files
+  index
+  includes/
+    models:
+      home
+      newlistpage
+      editlistpage
+      reportspage
+      optionspage
+    dependencies:
+      form
+      xml
+    views:
+      page
+      checklistpage
+      optionspagelayout
+    controllers:
+      menu
+      listsaveform
+      jquerymod
+      loadform
+  css/
+    styles.css
+  misc/
+    images/
+    js/
+      jquerymod.js
+4. each list item should have a unix timestamp attached so that the reporting page can keep an item-by-item record of item completion
+5. options
+  reporting only available if user would like it to be there or not?
+    ajax into config file? (possible file/folder permissions issue for porting to other servers)
+      read config file to know if page is even available in settings? or
+      read the config file to know if link to page is hidden
+6. checking off list items done via checkbox, obviously
+7. jquery core files downloaded from source (for availability offline AKA my development environment) with note on why and link to source commented out
+8. probably going to have to consolodate the new list and edit list pages.  i mean, there's no point in having two if the post information is going to have trouble translating WITH errors across multiple pages (or even worse, back tot he original page)
+9. also, remove page titles from classes and keep them only in the settings class, since editing them in one place makes way more sense.
+10. going to go completely db from here on in, since apparently the xml saver breaks on permissions rules in my own localhost.  The good news that i am surprisingly better in mysql than xml. oh and its way easier.

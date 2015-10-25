@@ -1,0 +1,158 @@
+div {
+	display:inline-block;
+	margin:0;
+	padding:0;
+	border:0;
+}
+body {
+	padding:0;
+	margin:0;
+}
+ul {
+	list-style-type:none;
+}
+input, select {
+	cursor:pointer;
+}
+.hidden {
+	display: none;
+}
+input.new_list, input.item_box {
+	cursor:text;
+}
+#wrapper {
+	width:100%;
+}
+.full_width {
+	width: 100%;
+}
+#header_box, .content_filler {
+	background-color: #F0F0F0;	
+}
+a.menu_item:hover, #load_form select, #load_form input, #content_title, #checklist_items {	
+	background-color: #D8D8D8;
+}
+#header_box {
+	width: inherit;
+}
+#site_title {
+	display:inline-block;
+	color:black;
+	font-size: 2em;
+	margin:15px 0 5px 15px;
+}
+#page_status {
+	display:inline-block;
+	margin-left:15px;
+}
+#menu_box {
+	padding:0;
+	width:auto;
+	margin:0 0 0 15px;
+}
+a.menu_item, #load_form select, #load_form input, #content_title, #checklist_items, #commits input {
+	padding:7px 10px 7px 10px;
+}
+a.menu_item {
+	display:inline-block;
+	text-decoration: none;
+	color:black;
+	margin:0 10px 10px 0;
+	background-color: #D8D8D8;
+	font-size:1.2em;
+}
+a.menu_item:hover {
+	background-color: #909090;
+	color:white;
+}
+#content {
+	width:50%;
+}
+div.content_filler {
+	width:100%;
+	margin:10px 0 0 10px;
+}
+#load_form select, #load_form input, #content_title, #checklist_items, #commits input {
+	margin:10px 0 10px 10px;
+}
+#load_form select, #load_form input, #commits input {
+	font-size: 0.95em;
+	border:0;
+	width:47.5%;
+}
+#load_form select:active, #load_form input:hover {
+	background-color: #909090;
+	color:white;
+}
+#load_form select:active {
+	line-height: 1.5em;
+}
+#items_title, #content_title {
+	color:#505050;
+}
+#content_title, #content_title input, #checklist_items, #commits {
+	font-size: 1.2em;
+	display:block;
+	width:94%;
+}
+#content_title input {
+	border:0;
+	padding:10px;
+	margin:5px 0 0 0;
+	font-size: 0.9em;
+}
+#content_title input:focus {
+	border:0;
+	background-color: #909090;
+	color:white;
+}
+#list_name {
+	font-weight: bold;
+	color:black;
+}
+#list_items {
+	width:75%;
+}
+#list_items li {
+	display:block;
+	background-color: #909090;
+	margin:10px 0 0 0;
+	color:white;
+	padding:5px 10px 5px 10px;
+}
+#list_items li.completed {
+	color:#C8C8C8;
+}
+#list_items li input {	
+	font-size: 0.9em;
+	vertical-align: top;
+	margin:0 10px 0 0;
+}
+#list_items li input.checkbox {
+	margin:6px 10px 0 0px;
+}
+#list_items li input.item_box, span.list_item_text {
+	width:75%;
+}
+#list_items li input.item_box {
+	border:0;
+	background-color: #505050;
+	padding:2px 2px 2px 10px;
+	color:white;
+}
+span.list_item_text {
+	display:inline-block;
+}
+span.completion_date {
+	display:block;
+	font-size: 0.75em;
+	color:#202020;
+	margin:10px 0 7px 25px;
+}
+#commits {
+	width:100%;
+}
+#commits input {
+	font-size: 0.8em;
+	margin-top:0;
+}

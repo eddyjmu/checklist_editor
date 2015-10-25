@@ -20,7 +20,7 @@
 			self::$db_information = array(
 				'DB_HOST' => 'localhost',
 				'DB_USER' => 'root',
-				'DB_PSWD' => 'Living4me',		// please please remember to change this from the page when you upload to git
+				'DB_PSWD' => 'RACKSPACEISAWESOME',		// please please remember to change this from the page when you upload to git
 				'DB_NAME' => 'checklist_editor'
 			);
 		}

@@ -9,13 +9,12 @@
 		function add_menu(){
 			$menu = '';
 			foreach(settings::$page_arrays as $page_get => $page_title){
-				$menu .= '<a href="?page='.$page_get.'">';
 				if($page_get == $this->page_model->page_call){
-					$menu .= '['.$page_title.']';
+					$active_or_no = 'active_menu_item';
 				} else {
-					$menu .= $page_title;
+					$active_or_no = '';
 				}
-				$menu .= '</a> ';
+				$menu .= '<a class="menu_item '.$active_or_no.'" id="menu_item_'.$page_get.'" href="?page='.$page_get.'">'.$page_title.'</a>';
 			}
 			$menu .= '';
 			return $menu;

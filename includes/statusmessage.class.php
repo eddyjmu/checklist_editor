@@ -9,6 +9,6 @@
 			} else {
 				$status_message = '';
 			}
-			$this->page_model->page_content .= '<b>'.$status_message.'</b><br /><br />';
+			$this->page_model->page_status .= '('.$status_message.')';
 		}
 	}

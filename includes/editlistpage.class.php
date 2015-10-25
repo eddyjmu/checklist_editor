@@ -9,6 +9,9 @@
 		public $controllers;
 		public $new_checklist;
 		public $save_status;
+		public $page_css;
+		public $page_js;
+		public $page_status;
 		function __construct(){
 			$this->page_call = 'editlistpage';
 			$this->page_title = settings::$page_arrays[$this->page_call];
@@ -45,6 +48,11 @@
 				$this->new_checklist = true;
 				$this->controllers = array('menu','loadform','listsaveform');
 			}
+			array_push(settings::$default_js,
+				settings::$js_folder.'jquerymod.js'
+			);
+			$this->page_js = settings::$default_js;
+			$this->page_css = settings::$default_css;
 		}
 	}
 ?>

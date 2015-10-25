@@ -9,7 +9,7 @@
 		public $controllers;
 		function __construct(){
 			$this->page_call = 'optionspage';
-			$this->page_title = 'Options';
+			$this->page_title = settings::$page_arrays[$this->page_call];
 			$this->page_content = '';
 			$this->view = 'optionspagelayout';
 			$this->controllers = array('menu');

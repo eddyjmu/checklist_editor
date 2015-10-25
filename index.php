@@ -8,10 +8,10 @@ if (isset($_GET['page'])&&($_GET['page']<>'')) {
 	$page_sought = $_GET['page'];
 	// assigning a page if sought page does not exist in array
 	if(!array_key_exists($page_sought,settings::$page_arrays)){
-		$page_sought = 'homepage';
+		$page_sought = 'editlistpage';
 	}
 } else {
-	$page_sought = 'homepage';
+	$page_sought = 'editlistpage';
 }
 // grabbing page components and grabbing model class
 foreach(settings::$page_arrays as $page_name => $page_title){

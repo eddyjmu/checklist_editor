@@ -1,2 +1,2 @@
-# rackspace_interview
-Code provided for the Rackspace Interview Process
+# checklist_editor
+Simple Checklist Editor Site

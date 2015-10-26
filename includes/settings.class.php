@@ -24,12 +24,12 @@
 			self::$db_information = array(
 				'DB_HOST' => 'localhost',
 				'DB_USER' => 'root',
-				'DB_PSWD' => 'R0ckspac3R0cks',		// please please remember to change this from the page when you upload to git
+				'DB_PSWD' => 'Living4me',		// please please remember to change this from the page when you upload to git
 				'DB_NAME' => 'checklist_editor'
 			);
 			self::$css_folder = 'css/';
 			self::$js_folder = 'misc/js/';
-			self::$default_js = array('https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js');
+			self::$default_js = array(self::$js_folder.'jquery.js');
 			self::$default_css = array(self::$css_folder.'style.css');
 		}
 	}

@@ -13,11 +13,11 @@ $('a.updn').click(function(){
 	//	temp = target
 	temp_value = $target_li.children('div').children('textarea').val();
 	temp_completion = $target_li.children('input').val();
-	temp_check = $target_li.children('input').prop('checked');
+	temp_check = $target_li.children('input').checked;
 	//	target= self
 	$target_li.children('div').children('textarea').val( $self_li.children('div').children('textarea').val() );
 	$target_li.children('input').val( $self_li.children('input').val()					);
-	$target_li.children('input').prop('checked', $self_li.children('input').prop('checked') );
+	$target_li.children('input').prop('checked', $self_li.children('input').checked );
 	//	self = temp
 	$self_li.children('div').children('textarea').val( temp_value );
 	$self_li.children('input').val( temp_completion );

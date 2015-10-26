@@ -95,7 +95,7 @@
 					// for some reason this line isn't working properly
 					$completion_query = ' completion="",';
 				}
-				if($this->free_item_id() == $list_item_id){
+				if($list_item_id >= $this->free_item_id()){
 					// insert item in db if it has an id that is free
 					$this->create_item($list_item_id,$checklist_id,$completed_query,$completion_query,$list_item_value_array['description']);
 				} else {

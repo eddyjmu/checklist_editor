@@ -24,7 +24,7 @@
 			self::$db_information = array(
 				'DB_HOST' => 'localhost',
 				'DB_USER' => 'root',
-				'DB_PSWD' => 'Living4me',		// please please remember to change this from the page when you upload to git
+				'DB_PSWD' => 'RackspaceRocks',		// please please remember to change this from the page when you upload to git
 				'DB_NAME' => 'checklist_editor'
 			);
 			self::$css_folder = 'css/';

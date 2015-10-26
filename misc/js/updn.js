@@ -7,19 +7,19 @@ $('a.updn').click(function(){
 	} else if (direction == 'dn') {
 		target_id = $self_li.next().attr('data-id');
 	} else {
-		//	do nothing because never called
+		// do nothing because never called
 	}
 	$target_li = $self_li.parent().children('li[data-id="'+target_id+'"]');
-	//	temp = target
-	temp_value = $target_li.children('div').children('textarea').val();
+	// temp = target
+	temp_value = $target_li.children('div textarea').val();
 	temp_completion = $target_li.children('input').val();
 	temp_check = $target_li.children('input').checked;
-	//	target= self
-	$target_li.children('div').children('textarea').val( $self_li.children('div').children('textarea').val() );
+	// target= self
+	$target_li.children('div textarea').val( $self_li.children('div textarea').val() );
 	$target_li.children('input').val( $self_li.children('input').val()					);
 	$target_li.children('input').prop('checked', $self_li.children('input').checked );
-	//	self = temp
-	$self_li.children('div').children('textarea').val( temp_value );
+	// self = temp
+	$self_li.children('div textarea').val( temp_value );
 	$self_li.children('input').val( temp_completion );
 	$self_li.children('input').prop('checked', temp_check );
 });

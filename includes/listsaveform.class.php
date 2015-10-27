@@ -35,7 +35,7 @@
 			$this->page_model->page_content .= $this->build_form_string($form_array, $list_name, $this->page_model->new_checklist);
 		}
 		function build_form_string($form_array, $list_name, $new_checklist){
-			$checkmark = '<a class="done_editing hidden">&check;done</a>';
+			$checkmark = '<a class="done_editing hidden">[&check;done]</a>';
 			$form_string = '<div id="list_save_form" class="content_filler"><form method="post" action="index.php?page=';
 				$form_string .= 'editlistpage';
 			$form_string .= '"><a id="content_title">';

@@ -1,11 +1,11 @@
-1. So...basic stuff
+1. page dependencies
   Home Page
     model: intro
       home page title, content, controllers, view, classes
     classes: none
     view: page layout
     controller: menu
-  New List
+  New List (consolidated with Edit List)
     model: new list page title, content, controllers, view, classes
     classes: form
     view: checklistpage layout
@@ -23,14 +23,14 @@
         jquery modifier, filled list save form
       else
         checklist load form
-  Reports
+  Reports (not yet included)
     model: reports page title, controllers, view, classes
       if post
         report content, loadxml
     classes: form, xml
     view: page layout
     controller: menu, load report form
-  Options
+  Options (not yet included)
     model: options page title, controllers, view, classes, options content, loadxml, savexml
     classes: form, xml
     view: options page layout
@@ -41,7 +41,7 @@
     dependencies: n/a
     view:         page
     controllers:  menu
-  newlistpage 'New List'
+  newlistpage 'New List' (consolidated with editlistpage)
     model:        newlistpage
     dependencies: form
     view:         checklistpage
@@ -54,17 +54,17 @@
       post 'load':        jquerymod, listsaveform
         post 'save':      saveform
       else:               loadform
-  reportspage 'Reports'
+  reportspage 'Reports' (not yet included)
     model:        reportspage
     dependencies: form, xml
     view:         page
     controllers:  menu, loadform
-  optionspage 'Options'
+  optionspage 'Options' (not yet included)
     model:        optionspage
     dependencies: form, xml
     view:         optionspagelayout
     controllers:  menu, jquerymod, listsaveform
-3. files
+3. files (original concept)
   index
   includes/
     models:
@@ -98,7 +98,9 @@
       read config file to know if page is even available in settings? or
       read the config file to know if link to page is hidden
 6. checking off list items done via checkbox, obviously
-7. jquery core files downloaded from source (for availability offline AKA my development environment) with note on why and link to source commented out
-8. probably going to have to consolodate the new list and edit list pages.  i mean, there's no point in having two if the post information is going to have trouble translating WITH errors across multiple pages (or even worse, back tot he original page)
+7. jquery core files downloaded from source (for availability offline AKA my development environment) from google API = https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js...
+        NOTE: apparently there is a new version of jquery available from google, afraid to grab newest version...
+8. probably going to have to consolidate the new list and edit list pages.  i mean, there's no point in having two if the post information is going to have trouble translating WITH errors across multiple pages (or even worse, back tot he original page)
 9. also, remove page titles from classes and keep them only in the settings class, since editing them in one place makes way more sense.
-10. going to go completely db from here on in, since apparently the xml saver breaks on permissions rules in my own localhost.  The good news that i am surprisingly better in mysql than xml. oh and its way easier.
+10. going to go completely db from here on in, since apparently the xml saver breaks on permissions rules in my own localhost.  The good news that i am surprisingly better in mysql than xml. oh and its way easier. idk why i didn't go that route first.
+11. it just occurred to me that i could have just have built a really simple php framework file for the pages, instead of the mess that's there now, and just incorporate some jquery ajax to modify the content and db stuff (with maybe one db php file).  i'd still have come across a problem with the deleting items (if i get to that point, even though it's not optimal, might just add column to db noting deletion and only grab the items that don't have anything in column) but i'd have had more time to fiddle around with that. i've been working on this every day (besides being at work) from like 8am to at least 2am and i wasted way too much time on the php side of things. 

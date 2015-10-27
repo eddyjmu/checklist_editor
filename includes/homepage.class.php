@@ -9,6 +9,7 @@
 		public $controllers;		
 		public $page_css;
 		public $page_js;
+		public $page_status;
 		function __construct(){
 			$this->page_call = 'homepage';
 			$this->page_title = settings::$page_arrays[$this->page_call];

@@ -1,0 +1,33 @@
+SERVER DOCUMENTATION
+
+
+LAMP Stack
+--------------------------------------------------------------------------------------------------------
+Ubuntu | v14.04 LTS
+Apache | v2.4.7
+MySQL | v5.5.41
+PHP | v5.5.9
+
+
+DATABASE (access information in /includes/settings.class.php)
+--------------------------------------------------------------------------------------------------------
+database name | checklist_editor
+
+
+checklists TABLE
+--------------------------------------------------------------------------------------------------------
+id - INT(11) | name - VARCHAR(100) | creation - VARCHAR(20)
+
+- 'id', 'name' are unique
+- 'creation' is currently unused front-end but if reporting is eventually active, will be necessary
+
+
+items TABLE
+--------------------------------------------------------------------------------------------------------
+id - INT(11) | checklist - INT(11) | completed - INT(11) | completion - VARCHAR(20) | description - TEXT
+
+- 'id' is unique
+- 'checklist' points to id in checklists table
+- 'completed' is either 1 or 0 and represents whether the item is checked (aka completed)
+- 'completion' is Unix Timestamp, also currently unused, eventually maybe in reporting
+- 'description' contains item content (the text displayed in the textareas in list items on the page)

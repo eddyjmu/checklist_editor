@@ -35,6 +35,7 @@
 			$this->page_model->page_content .= $this->build_form_string($form_array, $list_name, $this->page_model->new_checklist);
 		}
 		function build_form_string($form_array, $list_name, $new_checklist){
+			$checkmark = '<a class="done_editing hidden">&check;done</a>';
 			$form_string = '<div id="list_save_form" class="content_filler"><form method="post" action="index.php?page=';
 				$form_string .= 'editlistpage';
 			$form_string .= '"><a id="content_title">';
@@ -65,10 +66,21 @@
 					$completion = '';
 				}
 				if($item['description']!=null){
-					$form_string .= '<li class="occupied'.$completion.'" id="list_item_'.$item_id.'">';
+					$form_string .= '<li class="occupied'.$completion.'" id="list_item_'.$item_id.'" data-id="'.$item_id.'">';
 					$form_string .= '<input class="checkbox" type="checkbox" name="checklist_item_'.$item_id.'_completed" '.$checked.' value="'.$completed_value.'">';
-					$form_string .= '<span class="list_item_text">'.$item['description'].'</span>';
-					$form_string .= '<input class="item_box hidden" type="text" name="checklist_item_'.$item_id.'_description" value="'.$item['description'].'">';
+					$form_string .= '<div class="move">';
+					if($i==0){
+						$form_string .= '<a class="darkmove up">&#8613;</a><a class="move dn" data-direction="dn">&#8615</a>';
+					} elseif(($i+1) == count($form_array['items'])){
+						$form_string .= '<a class="move up" data-direction="up">&#8613</a><a class="darkmove dn" >&#8615;</a>';
+					} else {
+						$form_string .= '<a class="move up" data-direction="up">&#8613</a><a class="move dn" data-direction="dn">&#8615;</a>';
+					}
+					$form_string .= '</div>';
+					$form_string .= '<div class="list_item_content">';
+					$form_string .= '<span class="list_item_text block">'.$item['description'].'</span>';
+					$form_string .= '<textarea class="item_box hidden" name="checklist_item_'.$item_id.'_description">'.$item['description'].'</textarea>'.$checkmark;
+					$form_string .= '</div>';
 				} else {
 				}
 				//$form_string .= '<span class="completion_date">'.$completion.'</span></li>'; // forgot to pass the old completion values through the form and then into db, so completion date is always when the list is saved -_-
@@ -76,10 +88,11 @@
 				$i++;
 			}
 			if($i>0){
-				$form_string .= '<li class="new"><input class="checkbox" type="checkbox" name="checklist_item_'.$this->free_item_id.'_completed">';
-				$form_string .= '<input class="item_box" type="text" name="checklist_item_'.$this->free_item_id.'_description" placeholder="new list item">';
+				$form_string .= '<li class="new" id="list_item_'.$this->free_item_id.'" data-id="'.$this->free_item_id.'"><input class="checkbox" type="checkbox" name="checklist_item_'.$this->free_item_id.'_completed">';
+				$form_string .= '<div class="list_item_content"><textarea class="item_box" name="checklist_item_'.$this->free_item_id.'_description" placeholder="new list item"></textarea></div></li>';
 			}
 			$form_string .= '</ul>';
+			$form_string .='<a id="addrow">Add Item</a>';
 			$form_string .= '</div>';
 			$form_string .= '<div id="commits">';
 			if($new_checklist){

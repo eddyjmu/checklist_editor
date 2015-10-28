@@ -44,6 +44,40 @@ $(document).ready(function(){
 			}		
 		});
 	});
+	$('#delete_checklist').click(function() {
+	    $(this).data('clicked', true);
+	});
+	$('#save_checklist').click(function() {
+	    $(this).data('clicked', true);
+	});
+	$('#list_save_form').submit(function(){
+		if($('#delete_checklist').data('clicked')){
+			if(confirm('Delete checklist?')){
+				return true;
+			} else {
+				$('#delete_checklist').data('clicked', false);
+				return false;
+			}
+		} else if ($('#save_checklist').data('clicked')) {
+			return true;
+		}
+	});
+	$('a.delete_item').click(function(){
+		var this_id = $(this).parent().attr('data-id');
+		$.ajax({
+			type: 'POST',
+			url:'includes/deleteitem.class.php',
+			data: '{"list_item":"'+this_id+'"}',
+		    contentType: 'application/json; charset=utf-8',
+		    dataType: 'json',
+		    success: function(data){
+				$('li[data-id="'+this_id+'"]').remove();
+		    },
+		    error: function (data){
+		    	alert('Item could not be deleted! Sorry buddy =[');
+		    }
+		});
+	});
 	// an attempt to make every list item's done checkmark disappear if nothing is in the textarea 
 	/*$('li').each(function(i){
 		var $content_box = $(this).children('div.list_item_content');

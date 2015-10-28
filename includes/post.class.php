@@ -8,6 +8,7 @@ class post {
 		unset($post_array['checklist_uts']);
 		unset($post_array['commit_new_save']);
 		unset($post_array['commit_save']);
+		unset($post_array['commit_delete']);
 		$lead_up = 'checklist_item_';
 		$list_array = array();
 		foreach($post_array as $post_id => $post_content){
@@ -33,9 +34,6 @@ class post {
 	}
 	function post_to_form($post_array){
 		// find out what post looks like and grab everything from that, same as always
-		/* '<pre>';
-		print_r($post_array);
-		echo '</pre>'; die();*/
 		$new_array = array(
 			'creation' => $post_array['checklist_uts'],
 			'items' => $this->post_to_array($post_array)

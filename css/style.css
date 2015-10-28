@@ -11,24 +11,29 @@ body {
 ul {
 	list-style-type:none;
 }
-input, select, a.move {
+input, select, a.move, a.delete_item {
 	cursor:pointer;
 }
 input.new_list, input.item_box {
 	cursor:text;
 }
-div.move, a.move, a.darkmove {
+div.move, a.move, a.darkmove, a.delete_item {
 	margin-right: 5px;
 	vertical-align: top;
 }
-a.darkmove {
+a.move, a.darkmove, a.delete_item {
 	color:#BEBEBE;
+}
+a.delete_item:hover, a.move:hover {
+	color:white;
+}
+a.darkmove {
 	cursor:default;
 }
 a.up {
 	float:left;
 }
-a.dn {
+a.delete_item, a.dn {
 	float:right;
 }
 div.move {
@@ -148,7 +153,7 @@ div.list_item_content {
 	margin:0 10px 0 0;
 }
 #list_items li input.checkbox {
-	margin:6px 10px 0 0px;
+	margin:4px 10px 0 0px;
 }
 textarea.item_box {
 	width:99%;
@@ -166,7 +171,7 @@ span.list_item_text {
 	width:100%;
 	cursor:pointer;
 }
-span.list_item_text:hover, a.done_editing:hover, a.move:hover {
+span.list_item_text:hover, a.done_editing:hover {
 	color:#202020;
 }
 #addrow {

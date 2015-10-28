@@ -36,7 +36,8 @@
 		}
 		function build_form_string($form_array, $list_name, $new_checklist){
 			$checkmark = '<a class="done_editing hidden">[&check;done]</a>';
-			$form_string = '<div id="list_save_form" class="content_filler"><form method="post" action="index.php?page=';
+			$delete_mark = '<a class="delete_item">X</a>';
+			$form_string = '<div id="list_save_form" class="content_filler"><form id="list_save_form" method="post" action="index.php?page=';
 				$form_string .= 'editlistpage';
 			$form_string .= '"><a id="content_title">';
 			if (($list_name<>'')&&($this->page_model->save_status!=1)) {
@@ -80,7 +81,7 @@
 					$form_string .= '<div class="list_item_content">';
 					$form_string .= '<span class="list_item_text block">'.$item['description'].'</span>';
 					$form_string .= '<textarea class="item_box hidden" name="checklist_item_'.$item_id.'_description">'.$item['description'].'</textarea>'.$checkmark;
-					$form_string .= '</div>';
+					$form_string .= '</div>'.$delete_mark;
 				} else {
 				}
 				//$form_string .= '<span class="completion_date">'.$completion.'</span></li>'; // forgot to pass the old completion values through the form and then into db, so completion date is always when the list is saved -_-
@@ -96,14 +97,14 @@
 			$form_string .= '</div>';
 			$form_string .= '<div id="commits">';
 			if($new_checklist){
-				$form_string .= '<input type="submit" value="Save new checklist" name="commit_new_save">';
+				$form_string .= '<input id="save_checklist" type="submit" value="Save new checklist" name="commit_new_save">';
 			} else {
-				$form_string .= '<input type="submit" value="Save checklist" name="commit_save">';
+				$form_string .= '<input id="save_checklist" type="submit" value="Save checklist" name="commit_save">';
+			}
+			if(!$new_checklist){
+				$form_string .= '<input id="delete_checklist" type="submit" value="Delete Checklist" name="commit_delete">';
 			}
 			$form_string .= '</div>';
-			if(!$new_checklist){
-				//$form_string .= '<input type="submit" value="Delete Checklist" name="commit_delete">';
-			}
 			$form_string .= '</form></div>';
 			return $form_string;
 		}

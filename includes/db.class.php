@@ -132,7 +132,32 @@
 			if($results = mysqli_query($database, 'INSERT INTO items (id, checklist, completed, completion, description) VALUES ("'.$id.'","'.$checklist.'","'.$completed.'","'.$completion.'","'.$description.'");')){}
 			mysqli_close($database);
 		}
-		/*function delete_list_file(){
+		function delete_list($post_array){
 			// self-explanatory
-		}*/
+			$post_object = new post();
+			$list_item_array = $post_object->post_to_array($post_array);
+			$database = mysqli_connect($this->db_information['DB_HOST'], $this->db_information['DB_USER'], $this->db_information['DB_PSWD'], $this->db_information['DB_NAME']);
+			if (mysqli_connect_errno()) {
+			    printf("Connect failed: %s\n", mysqli_connect_error());
+			    exit();
+			}
+			if($results = mysqli_query($database, 'DELETE FROM checklists WHERE name="'.$post_array['checklist'].'";')){}
+			mysqli_close($database);
+			foreach ($list_item_array as $list_item_id => $list_item_array) {
+				$database = mysqli_connect($this->db_information['DB_HOST'], $this->db_information['DB_USER'], $this->db_information['DB_PSWD'], $this->db_information['DB_NAME']);
+				if (mysqli_connect_errno()) {
+				    printf("Connect failed: %s\n", mysqli_connect_error());
+				    exit();
+				}
+				if($results = mysqli_query($database, 'DELETE FROM items WHERE id="'.$list_item_id.'";')){}
+				mysqli_close($database);
+			}
+			//$this->re_order_items();
+		}
+		function delete_item(){
+			// 500 (Internal Server Error)? Seriously? Google Chrome apparently, for security reasons, prevents ajax calls to files in current directory or something.  Anyways, I don't have any more time =[[[[[
+		}
+		function re_order_items(){
+			// well i was about to make something to renumber the items in the items table in checklist_editor db, but i suddenly realized that it doesn't matter as long as they're unique haha
+		}
 	}
